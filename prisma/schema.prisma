@@ -1,0 +1,28 @@
+// aqui dentro e aonde vamos definir as tabelas, vamos criar toda estrutura das tabelas
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+// va para o arquivo .env e indique o caminho para salvar o arquivo
+
+// agora vamos criar as nossas tabelas 
+model Book {
+  id String @id @default(uuid())
+  title String
+  description String
+  bar_code String 
+
+  @@map("books") // nome da tabela no banco de dados
+}
+
+// com o modelo da tabela pronto vamos rodar as migrations: npx prisma migrate dev
+
+// vamos usar a extenção do sqlite que instalamos para poder utilizar o banco de dados sqlite e ver a tabela criada
+// aperte o botão Ctrl + p selecione a opção SQLite: Open Database que vai disponibilizar ter acesso ao bd
+
+// use o a linha de comando para criar uma pasta pre configurada nest g resource book
